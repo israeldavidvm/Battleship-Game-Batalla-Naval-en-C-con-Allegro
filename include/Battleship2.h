@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstdlib>
+#include <cstdio>
+
 #include <string>
 
 enum VistasJ{SELECCION, JUGARCPU, MULTIPLAYER};
@@ -40,7 +42,7 @@ private:
     BITMAP *fondo4 ;
     BITMAP *fondo5 ;
 
-    BITMAP *cursor = load_bitmap("cursor.bmp",NULL);
+    BITMAP *cursor = load_bitmap("img/cursor.bmp",NULL);
 
 public:
 	Battleship() {
@@ -48,42 +50,42 @@ public:
 		puntuacion = derrotas = victorias = 0;
 	}
 
-	void inicio(){
-    fondo = load_bitmap("iniciomenu.bmp",NULL);
-    fondo1 = load_bitmap("inicioindividual.bmp",NULL);
-    fondo2 = load_bitmap("iniciodosjugadores.bmp",NULL);
-    fondo3= load_bitmap("inicioregresar.bmp",NULL);
-    bool salida=false;
-
-    while(!salida){
-        if((mouse_x>=160&&mouse_x<=312)&&(mouse_y>=348&&mouse_y<=380)){
-            blit(fondo1,buffer,0,0,0,0,800,530);
-            if(mouse_b & 1){
-                ModoDJuego=JUGARCPU;
-                salida=true;
-            }
-        }else if((mouse_x>=146&&mouse_x<=333)&&(mouse_y>=386&&mouse_y<=412)){
-            blit(fondo2,buffer,0,0,0,0,800,530);
-            if(mouse_b & 1){
-                ModoDJuego=MULTIPLAYER;
-                salida=true;
-            }
-        }
-        else if((mouse_x>=170&&mouse_x<=294)&&(mouse_y>=413&&mouse_y<=445)){
-            blit(fondo3,buffer,0,0,0,0,800,530);
-            if(mouse_b & 1){
-                salida=true;
-
-                return;
-            }
-        }
-        else{
-            blit(fondo,buffer,0,0,0,0,800,530);
-        }
-        masked_blit(cursor,buffer,0,0,mouse_x,mouse_y,13,22);
-        blit(buffer,screen,0,0,0,0,800,530);
-    }
-				}
+//	void inicio(){
+//        fondo = load_bitmap("img/iniciomenu.bmp",NULL);
+//        fondo1 = load_bitmap("img/inicioindividual.bmp",NULL);
+//        fondo2 = load_bitmap("img/iniciodosjugadores.bmp",NULL);
+//        fondo3= load_bitmap("img/inicioregresar.bmp",NULL);
+//        bool salida=false;
+//
+//        while(!salida){
+//            if((mouse_x>=160&&mouse_x<=312)&&(mouse_y>=348&&mouse_y<=380)){
+//                blit(fondo1,buffer,0,0,0,0,800,530);
+//                if(mouse_b & 1){
+//                    ModoDJuego=JUGARCPU;
+//                    salida=true;
+//                }
+//            }else if((mouse_x>=146&&mouse_x<=333)&&(mouse_y>=386&&mouse_y<=412)){
+//                blit(fondo2,buffer,0,0,0,0,800,530);
+//                if(mouse_b & 1){
+//                    ModoDJuego=MULTIPLAYER;
+//                    salida=true;
+//                }
+//            }
+//            else if((mouse_x>=170&&mouse_x<=294)&&(mouse_y>=413&&mouse_y<=445)){
+//                blit(fondo3,buffer,0,0,0,0,800,530);
+//                if(mouse_b & 1){
+//                    salida=true;
+//
+//                    return;
+//                }
+//            }
+//            else{
+//                blit(fondo,buffer,0,0,0,0,800,530);
+//            }
+//            masked_blit(cursor,buffer,0,0,mouse_x,mouse_y,13,22);
+//            blit(buffer,screen,0,0,0,0,800,530);
+//        }
+//    }
 
 	void jugarCpu() {
 		inicializar();
