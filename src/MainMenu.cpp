@@ -1,5 +1,5 @@
 #include "../include/MainMenu.h"
-#include "../include/Jugar.h"
+#include "../include/Game.h"
 #include "../include/Manual.h"
 #include "../include/About.h"
 
@@ -57,7 +57,7 @@ void MainMenu::listenEvents(){
 
         if(mouse_b & 1){
             gameEngine->playSound(blockSound);
-            gameEngine->changeView(Jugar::getInstance(gameEngine));
+            gameEngine->changeView(Game::getInstance(gameEngine));
             end=true;
         }
     }else if((mouse_x>=118&&mouse_x<=360)&&(mouse_y>=280&&mouse_y<=305)){
