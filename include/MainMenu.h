@@ -43,7 +43,7 @@ class MainMenu : public View
         SAMPLE* music;
         SAMPLE* blockSound;
 
-        BITMAP* bufer;
+        BITMAP* buffer;
         BITMAP* cursor;
 
         BITMAP* background;

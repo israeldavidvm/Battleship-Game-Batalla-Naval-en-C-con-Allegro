@@ -52,7 +52,8 @@ Manual::~Manual()
 
 void Manual::listenEvents(){
 
-    if((mouse_x>=550&&mouse_x<=619)&&(mouse_y>=385&&mouse_y<=425)){
+
+    if(gameEngine->mouseInsideCoords({550,385},{619,425})){
         gameEngine->changeBackground(backgroundWithHover);
         if(mouse_b & 1){
             gameEngine->playSound(blockSound);

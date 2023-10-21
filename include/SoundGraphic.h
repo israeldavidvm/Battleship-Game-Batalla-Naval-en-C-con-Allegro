@@ -15,7 +15,7 @@
 
 class SoundGraphic{
     private:
-    BITMAP *bufer;
+    BITMAP *buffer;
     BITMAP *cursor;
 
 
@@ -66,12 +66,12 @@ class SoundGraphic{
         install_mouse();
         install_keyboard();
 
-        bufer = create_bitmap(640,640);
+        buffer = create_bitmap(640,640);
         cursor = load_bitmap("img/cursor.bmp",NULL);
 
         batleship=new BatallaNaval();
         Block=load_sample("sound/block.wav");
-        bufer = create_bitmap(640,640);
+        buffer = create_bitmap(640,640);
         MenuS=load_sample("sound/menu.wav");
         cursor = load_bitmap("img/cursor.bmp",NULL);
 
@@ -124,16 +124,16 @@ class SoundGraphic{
 //        salida=false;
 //
 //        while(!salida){
-//            clear_bitmap(bufer);
+//            clear_bitmap(buffer);
 //            if((mouse_x>=118&&mouse_x<=360)&&(mouse_y>=252&&mouse_y<=279)){
-//                blit(fondo1,bufer,0,0,0,0,640,640);
+//                blit(fondo1,buffer,0,0,0,0,640,640);
 //                if(mouse_b & 1){
 //                    Vista=JUGAR;
 //                    play_sample(Block , 255, 127, 1000, 0);
 //                    salida=true;
 //                }
 //            }else if((mouse_x>=118&&mouse_x<=360)&&(mouse_y>=280&&mouse_y<=305)){
-//                blit(fondo2,bufer,0,0,0,0,640,640);
+//                blit(fondo2,buffer,0,0,0,0,640,640);
 //                if(mouse_b & 1){
 //                    Vista=JUGAR;
 //                    play_sample(Block , 255, 127, 1000, 0);
@@ -142,7 +142,7 @@ class SoundGraphic{
 //                }
 //            }
 //            else if((mouse_x>=118&&mouse_x<=360)&&(mouse_y>=306&&mouse_y<=333)){
-//                blit(fondo3,bufer,0,0,0,0,640,640);
+//                blit(fondo3,buffer,0,0,0,0,640,640);
 //                if(mouse_b & 1){
 //                    Vista=ACERCA;
 //                    play_sample(Block , 255, 127, 1000, 0);
@@ -150,7 +150,7 @@ class SoundGraphic{
 //                }
 //            }
 //            else if((mouse_x>=118&&mouse_x<=360)&&(mouse_y>=334&&mouse_y<=360)){
-//                blit(fondo4,bufer,0,0,0,0,640,640);
+//                blit(fondo4,buffer,0,0,0,0,640,640);
 //                if(mouse_b & 1){
 //                    Vista=MANUAL;
 //                    play_sample(Block , 255, 127, 1000, 0);
@@ -158,7 +158,7 @@ class SoundGraphic{
 //                }
 //            }
 //            else if((mouse_x>=118&&mouse_x<=360)&&(mouse_y>=360&&mouse_y<=420)){
-//                blit(fondo5,bufer,0,0,0,0,640,640);
+//                blit(fondo5,buffer,0,0,0,0,640,640);
 //                if(mouse_b & 1){
 //                    Vista=FIN;
 //                    play_sample(Block , 255, 127, 1000, 0);
@@ -166,10 +166,10 @@ class SoundGraphic{
 //                }
 //            }
 //            else{
-//                blit(fondo,bufer,0,0,0,0,640,640);
+//                blit(fondo,buffer,0,0,0,0,640,640);
 //            }
-//            masked_blit(cursor,bufer,0,0,mouse_x,mouse_y,13,22);
-//           blit(bufer,screen,0,0,0,(SCREEN_H/2)-245,640,640);
+//            masked_blit(cursor,buffer,0,0,mouse_x,mouse_y,13,22);
+//           blit(buffer,screen,0,0,0,(SCREEN_H/2)-245,640,640);
 //        }
 //        run();
 //    }
@@ -183,9 +183,9 @@ class SoundGraphic{
     salida=false;
 
     while(!salida){
-        clear_bitmap(bufer);
+        clear_bitmap(buffer);
         if((mouse_x>=160&&mouse_x<=312)&&(mouse_y>=280&&mouse_y<=305)){
-            blit(fondo1,bufer,0,0,0,0,640,640);
+            blit(fondo1,buffer,0,0,0,0,640,640);
             if(mouse_b & 1){
             std::cout<<"QUESILLO";
 //                play_sample(Block , 255, 127, 1000, 0);
@@ -193,7 +193,7 @@ class SoundGraphic{
 //                salida=true;
             }
         }else if((mouse_x>=146&&mouse_x<=333)&&(mouse_y>=308&&mouse_y<=332)){
-            blit(fondo2,bufer,0,0,0,0,640,640);
+            blit(fondo2,buffer,0,0,0,0,640,640);
             if(mouse_b & 1){
                 play_sample(Block , 255, 127, 1000, 0);
                 batleship->jugar2(MULTIJUGADOR);
@@ -201,7 +201,7 @@ class SoundGraphic{
             }
         }
         else if((mouse_x>=170&&mouse_x<=294)&&(mouse_y>=333&&mouse_y<=357)){
-            blit(fondo3,bufer,0,0,0,0,640,640);
+            blit(fondo3,buffer,0,0,0,0,640,640);
             if(mouse_b & 1){
                 Vista=INICIO;
                 play_sample(Block , 255, 127, 1000, 0);
@@ -209,10 +209,10 @@ class SoundGraphic{
             }
         }
         else{
-            blit(fondo,bufer,0,0,0,0,640,640);
+            blit(fondo,buffer,0,0,0,0,640,640);
         }
-        masked_blit(cursor,bufer,0,0,mouse_x,mouse_y,13,22);
-        blit(bufer,screen,0,0,0,(SCREEN_H/2)-245,640,640);
+        masked_blit(cursor,buffer,0,0,mouse_x,mouse_y,13,22);
+        blit(buffer,screen,0,0,0,(SCREEN_H/2)-245,640,640);
     }
 
     run();
@@ -240,10 +240,10 @@ class SoundGraphic{
     }
         salida=false;
         while(!salida){
-        clear_bitmap(bufer);
+        clear_bitmap(buffer);
 
         if((mouse_x>=550&&mouse_x<=619)&&(mouse_y>=385&&mouse_y<=425)){
-            blit(fondo1,bufer,0,0,0,0,640,640);
+            blit(fondo1,buffer,0,0,0,0,640,640);
             if(mouse_b & 1){
                 play_sample(Block , 255, 127, 1000, 0);
                 switch(Manual){
@@ -272,10 +272,10 @@ class SoundGraphic{
             }
         }
         else{
-            blit(fondo,bufer,0,0,0,0,640,640);
+            blit(fondo,buffer,0,0,0,0,640,640);
         }
-        masked_blit(cursor,bufer,0,0,mouse_x,mouse_y,13,22);
-        blit(bufer,screen,0,0,0,(SCREEN_H/2)-245,640,640);
+        masked_blit(cursor,buffer,0,0,mouse_x,mouse_y,13,22);
+        blit(buffer,screen,0,0,0,(SCREEN_H/2)-245,640,640);
         }
     run();
 				}
@@ -285,9 +285,9 @@ class SoundGraphic{
     salida=false;
 
     while(!salida){
-        clear_bitmap(bufer);
+        clear_bitmap(buffer);
         if((mouse_x>=550&&mouse_x<=619)&&(mouse_y>=385&&mouse_y<=425)){
-            blit(fondo1,bufer,0,0,0,0,640,640);
+            blit(fondo1,buffer,0,0,0,0,640,640);
             if(mouse_b & 1){
                 Vista=INICIO;
                 play_sample(Block , 255, 127, 1000, 0);
@@ -295,10 +295,10 @@ class SoundGraphic{
             }
         }
         else{
-            blit(fondo,bufer,0,0,0,0,640,640);
+            blit(fondo,buffer,0,0,0,0,640,640);
         }
-        masked_blit(cursor,bufer,0,0,mouse_x,mouse_y,13,22);
-        blit(bufer,screen,0,0,0,(SCREEN_H/2)-245,640,640);
+        masked_blit(cursor,buffer,0,0,mouse_x,mouse_y,13,22);
+        blit(buffer,screen,0,0,0,(SCREEN_H/2)-245,640,640);
     }
 
     run();

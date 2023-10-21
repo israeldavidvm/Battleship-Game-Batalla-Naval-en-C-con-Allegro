@@ -51,7 +51,7 @@ MainMenu::~MainMenu()
 
 void MainMenu::listenEvents(){
 
-    if((mouse_x>=118&&mouse_x<=360)&&(mouse_y>=252&&mouse_y<=279)){
+    if(gameEngine->mouseInsideCoords({118,252},{360,279})){
 
         gameEngine->changeBackground(backgroundWithHoverOp1);
 
@@ -60,17 +60,16 @@ void MainMenu::listenEvents(){
             gameEngine->changeView(Game::getInstance(gameEngine));
             end=true;
         }
-    }else if((mouse_x>=118&&mouse_x<=360)&&(mouse_y>=280&&mouse_y<=305)){
+    }else if(gameEngine->mouseInsideCoords({118,280},{360,305})){
         gameEngine->changeBackground(backgroundWithHoverOp2);
 
         if(mouse_b & 1){
-            //Vista=JUGAR;
-            gameEngine->playSound(blockSound);
-            //batleship->jugar2(CARGAR);
+            //Load
+            //gameEngine->playSound(blockSound);
             //end=true;
         }
     }
-    else if((mouse_x>=118&&mouse_x<=360)&&(mouse_y>=306&&mouse_y<=333)){
+    else if(gameEngine->mouseInsideCoords({118,306},{360,333})){
         gameEngine->changeBackground(backgroundWithHoverOp3);
 
         if(mouse_b & 1){
@@ -79,7 +78,7 @@ void MainMenu::listenEvents(){
             end=true;
         }
     }
-    else if((mouse_x>=118&&mouse_x<=360)&&(mouse_y>=334&&mouse_y<=360)){
+    else if(gameEngine->mouseInsideCoords({118,334},{360,360})){
         gameEngine->changeBackground(backgroundWithHoverOp4);
 
         if(mouse_b & 1){
@@ -88,7 +87,7 @@ void MainMenu::listenEvents(){
             end=true;
         }
     }
-    else if((mouse_x>=118&&mouse_x<=360)&&(mouse_y>=360&&mouse_y<=420)){
+    else if(gameEngine->mouseInsideCoords({118,360},{360,420})){
         gameEngine->changeBackground(backgroundWithHoverOp5);
 
         if(mouse_b & 1){
