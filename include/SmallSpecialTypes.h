@@ -8,9 +8,8 @@ struct Coor{
 
 };
 
-enum Dir{NULA,HORIZONTAL,VERTICAL};
+enum Dir{HORIZONTAL,VERTICAL};
 
-enum Juego { SOLITARIO,MULTIJUGADOR,CARGAR};
 enum Modos { MANUAL,AUTOMATICO };
 
 

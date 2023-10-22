@@ -41,7 +41,6 @@ class Game : public View
     std::string texto2;
 
     Dir dir=HORIZONTAL;
-    Modos Modo;
 
     int cont=0;
     bool end=false;

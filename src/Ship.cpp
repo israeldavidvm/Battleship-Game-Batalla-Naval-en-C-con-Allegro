@@ -9,7 +9,7 @@ Ship::Ship(const std::string &name, int size, ShipType shipType) {
     this->size[1] = -1;
     this->size[2] = size;
     this->life = size;
-    dir = NULA;
+    updateDir(HORIZONTAL);
     coor.x = -1;
     coor.y = -1;
 }
