@@ -54,17 +54,15 @@ class Game : public View
     BITMAP* backgroundWithHoverOp1;
     BITMAP* backgroundWithHoverOp2;
     BITMAP* backgroundWithHoverOp3;
+    BITMAP* partideBackground;
 
-    BITMAP *fondo;
     BITMAP *buffer;
     BITMAP *cursor;
-    BITMAP *anuncio;
 
     BITMAP *oceano;
     BITMAP *explosion;
     BITMAP *fallo;
 
-    BITMAP *barcobmp;
     BITMAP *miningShip;
     BITMAP *submarine;
     BITMAP *frigate;
@@ -121,10 +119,10 @@ class Game : public View
     int selectShipAutomatic(Ship* fleet[5]);
     void putShipAutomatic(Ship* fleet[5],Hole logicalGrid[10][10]);
 
-    void prepararTablero(Hole logicalGrid[10][10],BITMAP *graphicGrid,Ship* fleet[10],Coor originT,Modos Modo ,const std::string &name);
+    void prepareBoard(Hole logicalGrid[10][10],BITMAP *graphicGrid,Ship* fleet[10],Coor originT,Modos Modo ,const std::string &name);
 
-    void disparar(Modos Modo,Hole tablero1[10][10],Hole tablero2[10][10],BITMAP *graphicGrid1,BITMAP *graphicGrid2,Ship* fleet1[5],Ship* fleet2[5],Coor originT1,Coor originT2);
-    void combate(Modos Modo1,Modos Modo2,Hole tablero1[10][10],Hole tablero2[10][10],const std::string &name1,const std::string &name2);
+    void shot(Modos Modo,Hole tablero1[10][10],Hole tablero2[10][10],BITMAP *graphicGrid1,BITMAP *graphicGrid2,Ship* fleet1[5],Ship* fleet2[5],Coor originT1,Coor originT2);
+    void combat(Modos Modo1,Modos Modo2,Hole tablero1[10][10],Hole tablero2[10][10],const std::string &name1,const std::string &name2);
 
     bool wantToStartTheGame();
 

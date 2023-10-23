@@ -82,7 +82,7 @@ void Manual::listenEvents(){
             }
 
             loadBitmaps();
-            rest(4000);
+            rest(1000);
         }
     }
     else{
@@ -95,20 +95,20 @@ void Manual::loadBitmaps(){
 
     switch(estado){
         case CAPITULO1:
-            background = load_bitmap("img/ayuda1.bmp",NULL);
-            backgroundWithHover = load_bitmap("img/ayuda2.bmp",NULL);
+            background = load_bitmap("img/manual/ayuda1.bmp",NULL);
+            backgroundWithHover = load_bitmap("img/manual/ayuda2.bmp",NULL);
         break;
         case CAPITULO2:
-            background = load_bitmap("img/ayuda3.bmp",NULL);
-            backgroundWithHover = load_bitmap("img/ayuda4.bmp",NULL);
+            background = load_bitmap("img/manual/ayuda3.bmp",NULL);
+            backgroundWithHover = load_bitmap("img/manual/ayuda4.bmp",NULL);
         break;
         case CAPITULO3:
-            background = load_bitmap("img/ayuda5.bmp",NULL);
-            backgroundWithHover = load_bitmap("img/ayuda6.bmp",NULL);
+            background = load_bitmap("img/manual/ayuda5.bmp",NULL);
+            backgroundWithHover = load_bitmap("img/manual/ayuda6.bmp",NULL);
         break;
         case CAPITULO4:
-            background = load_bitmap("img/ayuda7.bmp",NULL);
-            backgroundWithHover = load_bitmap("img/ayuda8.bmp",NULL);
+            background = load_bitmap("img/manual/ayuda7.bmp",NULL);
+            backgroundWithHover = load_bitmap("img/manual/ayuda8.bmp",NULL);
         break;
 
     }

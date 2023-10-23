@@ -103,13 +103,13 @@ void MainMenu::listenEvents(){
 
 void MainMenu::loadBitmaps(){
 
-    background = load_bitmap("img/normal.bmp",NULL);
+    background = load_bitmap("img/mainMenu/normal.bmp",NULL);
 
-    backgroundWithHoverOp1 = load_bitmap("img/iniciar.bmp",NULL);
-    backgroundWithHoverOp2 = load_bitmap("img/cargarjuego.bmp",NULL);
-    backgroundWithHoverOp3= load_bitmap("img/acercadeljuego.bmp",NULL);
-    backgroundWithHoverOp4 = load_bitmap("img/ayuda.bmp",NULL);
-    backgroundWithHoverOp5 = load_bitmap("img/salir.bmp",NULL);
+    backgroundWithHoverOp1 = load_bitmap("img/mainMenu/iniciar.bmp",NULL);
+    backgroundWithHoverOp2 = load_bitmap("img/mainMenu/cargarjuego.bmp",NULL);
+    backgroundWithHoverOp3= load_bitmap("img/mainMenu/acercadeljuego.bmp",NULL);
+    backgroundWithHoverOp4 = load_bitmap("img/mainMenu/ayuda.bmp",NULL);
+    backgroundWithHoverOp5 = load_bitmap("img/mainMenu/salir.bmp",NULL);
 
 }
 

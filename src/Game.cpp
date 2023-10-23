@@ -233,7 +233,7 @@
 
     void Game::drawView(){
 
-            blit(fondo,buffer,0,0,0,0,640,640);
+            blit(partideBackground,buffer,0,0,0,0,640,640);
 
             drawSelecMenu();
             drawOcean(logicalGrid1,graphicGrid1,originT1);
@@ -268,24 +268,23 @@
 
     void Game::loadBitmaps(){
 
-        background= load_bitmap("img/iniciomenu.bmp",NULL);
-        backgroundWithHoverOp1 = load_bitmap("img/inicioindividual.bmp",NULL);
-        backgroundWithHoverOp2 = load_bitmap("img/iniciodosjugadores.bmp",NULL);
-        backgroundWithHoverOp3= load_bitmap("img/inicioregresar.bmp",NULL);
+        background= load_bitmap("img/partide/iniciomenu.bmp",NULL);
+        backgroundWithHoverOp1 = load_bitmap("img/partide/inicioindividual.bmp",NULL);
+        backgroundWithHoverOp2 = load_bitmap("img/partide/iniciodosjugadores.bmp",NULL);
+        backgroundWithHoverOp3= load_bitmap("img/partide/inicioregresar.bmp",NULL);
 
-        anuncio=load_bitmap("img/Averia.bmp",NULL);
-        fondo = load_bitmap("img/fondo.bmp",NULL);
+        partideBackground = load_bitmap("img/partide/partideBackground.bmp",NULL);
         cursor = load_bitmap("img/cursor.bmp",NULL);
-        oceano=load_bitmap("img/tableroJ.bmp",NULL);
-        menu=load_bitmap("img/tablero.bmp",NULL);
-        explosion=load_bitmap("img/hundido.bmp",NULL);
-        fallo=load_bitmap("img/fallo.bmp",NULL);
+        oceano=load_bitmap("img/partide/oceano.bmp",NULL);
+        menu=load_bitmap("img/partide/tablero.bmp",NULL);
+        explosion=load_bitmap("img/partide/hundido.bmp",NULL);
+        fallo=load_bitmap("img/partide/fallo.bmp",NULL);
 
-        miningShip=load_bitmap("img/buqueT.bmp",NULL);
-        submarine=load_bitmap("img/submarinoT.bmp",NULL);
-        frigate=load_bitmap("img/fragataT.bmp",NULL);
-        battleship=load_bitmap("img/acorazadoT.bmp",NULL);
-        aircrafCarrier=load_bitmap("img/portaT.bmp",NULL);
+        miningShip=load_bitmap("img/partide/buqueT.bmp",NULL);
+        submarine=load_bitmap("img/partide/submarinoT.bmp",NULL);
+        frigate=load_bitmap("img/partide/fragataT.bmp",NULL);
+        battleship=load_bitmap("img/partide/acorazadoT.bmp",NULL);
+        aircrafCarrier=load_bitmap("img/partide/portaT.bmp",NULL);
 
     }
 
@@ -383,7 +382,7 @@
             ){
 
                 if(occupied){
-                    play_sample(blockSound , 255, 127, 1000, 0);
+                    gameEngine->playSound(blockSound);
                     gameEngine->writeTextCenterCenter("Esta ocupada la posicion");
                 }
                 else{
@@ -449,7 +448,7 @@
 
         }else{
             if(mouse_b  & 1){
-                play_sample(blockSound , 255, 127, 1000, 0);
+                //gameEngine->playSound(blockSound);
             }
         }
 
@@ -508,7 +507,7 @@
             }
     }
 
-    void Game::prepararTablero(Hole logicalGrid[10][10],BITMAP *graphicGrid,Ship* fleet[10],Coor originT,Modos Modo ,const std::string &name){
+    void Game::prepareBoard(Hole logicalGrid[10][10],BITMAP *graphicGrid,Ship* fleet[10],Coor originT,Modos Modo ,const std::string &name){
 
         gameEngine->writeTextCenterCenter("Le toca Colocar sus piesas en el tablero a "+name);
 
@@ -566,7 +565,7 @@
 
     }
 
-    void Game::disparar(Modos Modo,Hole tablero1[10][10],Hole tablero2[10][10],BITMAP *graphicGrid1,BITMAP *graphicGrid2,Ship* fleet1[5],Ship* fleet2[5],Coor originT1,Coor originT2) {
+    void Game::shot(Modos Modo,Hole tablero1[10][10],Hole tablero2[10][10],BITMAP *graphicGrid1,BITMAP *graphicGrid2,Ship* fleet1[5],Ship* fleet2[5],Coor originT1,Coor originT2) {
 
             bool termino=false;
 
@@ -587,7 +586,7 @@
 
                         if(!tablero2[holePointerCoor.y][holePointerCoor.x].state!=NORMAL){
 
-                                play_sample(shotSound , 255, 127, 1000, 0);
+                                gameEngine->playSound(shotSound);
 
                                 Ship* ship=tablero2[holePointerCoor.y][holePointerCoor.x].ship;
 
@@ -599,7 +598,7 @@
                                     if(ship->life==0){
 
                                         gameEngine->writeTextCenterCenter("Haz destruido al "+ship->name);
-                                        play_sample(explosionSound , 255, 127, 1000, 0);
+                                        gameEngine->playSound(explosionSound);
 
                                     }
 
@@ -613,11 +612,11 @@
 
                             termino=true;
 
+                            }else{
+                                gameEngine->playSound(blockSound);
+                                //gameEngine->writeTextCenterCenter("Ya le habias disparado a esta posicion");
                             }
 
-                    }else{
-                        play_sample(blockSound , 255, 127, 1000, 0);
-                        //gameEngine->writeTextCenterCenter("Ya le habias disparado a esta posicion");
                     }
 
                     drawView();
@@ -634,7 +633,7 @@
 
                 if(!tablero2[holePointerCoor.y][holePointerCoor.x].state!=NORMAL){
 
-                    play_sample(shotSound , 255, 127, 1000, 0);
+                    gameEngine->playSound(shotSound);
 
                     Ship* ship=tablero2[holePointerCoor.y][holePointerCoor.x].ship;
 
@@ -646,7 +645,7 @@
                         if(ship->life==0){
 
                             gameEngine->writeTextCenterCenter("Haz destruido al "+ship->name);
-                            play_sample(explosionSound , 255, 127, 1000, 0);
+                            gameEngine->playSound(explosionSound);
 
                         }
 
@@ -670,7 +669,7 @@
 
     }
 
-    void Game::combate(Modos Modo1,Modos Modo2,Hole tablero1[10][10],Hole tablero2[10][10],const std::string &name1,const std::string &name2) {
+    void Game::combat(Modos Modo1,Modos Modo2,Hole tablero1[10][10],Hole tablero2[10][10],const std::string &name1,const std::string &name2) {
         contj1=0;
         contj2=0;
 
@@ -680,7 +679,7 @@
     //            hideFleet1=false;
     //            hideFleet2=true;
 
-                disparar(Modo1, tablero1,tablero2,graphicGrid1,graphicGrid2,fleet1,fleet2,
+                shot(Modo1, tablero1,tablero2,graphicGrid1,graphicGrid2,fleet1,fleet2,
                 {0,0},{SCREEN_W-300,SCREEN_H-300});
                 contj1++;
 
@@ -692,7 +691,7 @@
     //                hideFleet2=false;
     //                hideFleet1=true;
 
-                    disparar(Modo2, tablero2,tablero1, graphicGrid2,graphicGrid1,fleet2,fleet1,{SCREEN_W-300,SCREEN_H-300},{0,0});
+                    shot(Modo2, tablero2,tablero1, graphicGrid2,graphicGrid1,fleet2,fleet1,{SCREEN_W-300,SCREEN_H-300},{0,0});
                     contj2++;
 
                     end=allShipsAreDestroyed(fleet1);
@@ -732,7 +731,7 @@
     //            hideFleet2=false;
     //            hideFleet1=true;
 
-                disparar(Modo2, tablero2,tablero1, graphicGrid2,graphicGrid1,fleet2,fleet1,{SCREEN_W-300,SCREEN_H-300},{0,0});
+                shot(Modo2, tablero2,tablero1, graphicGrid2,graphicGrid1,fleet2,fleet1,{SCREEN_W-300,SCREEN_H-300},{0,0});
                 contj2++;
 
                 end=allShipsAreDestroyed(fleet1);
@@ -799,10 +798,10 @@
             hideFleet1=false;
             hideFleet2=true;
 
-            prepararTablero(logicalGrid1,graphicGrid1,fleet1,originT1,MANUAL,"Jugador 1");
-            prepararTablero(logicalGrid2,graphicGrid2,fleet2,originT2,AUTOMATICO,"Cpu");
+            prepareBoard(logicalGrid1,graphicGrid1,fleet1,originT1,MANUAL,"Jugador 1");
+            prepareBoard(logicalGrid2,graphicGrid2,fleet2,originT2,AUTOMATICO,"Cpu");
 
-            combate(MANUAL,AUTOMATICO,logicalGrid1,logicalGrid2,"Jugador1","Cpu");
+            combat(MANUAL,AUTOMATICO,logicalGrid1,logicalGrid2,"Jugador1","Cpu");
 
         }else{
 
@@ -810,10 +809,10 @@
             hideFleet2=false;
 
 
-            prepararTablero(logicalGrid1,graphicGrid1,fleet1,originT1,AUTOMATICO,"Cpu");
-            prepararTablero(logicalGrid2,graphicGrid2,fleet2,originT2,MANUAL,"Jugador 1");
+            prepareBoard(logicalGrid1,graphicGrid1,fleet1,originT1,AUTOMATICO,"Cpu");
+            prepareBoard(logicalGrid2,graphicGrid2,fleet2,originT2,MANUAL,"Jugador 1");
 
-            combate(AUTOMATICO,MANUAL,logicalGrid1,logicalGrid2,"Cpu","Jugador 1");
+            combat(AUTOMATICO,MANUAL,logicalGrid1,logicalGrid2,"Cpu","Jugador 1");
 
         }
 
@@ -833,17 +832,17 @@
         hideFleet1=false;
         hideFleet2=true;
 
-        prepararTablero(logicalGrid1,graphicGrid1,fleet1,originT1,MANUAL,"Jugador 1");
+        prepareBoard(logicalGrid1,graphicGrid1,fleet1,originT1,MANUAL,"Jugador 1");
 
         hideFleet1=true;
         hideFleet2=false;
 
-        prepararTablero(logicalGrid2,graphicGrid2,fleet2,originT2,MANUAL,"Jugador 2");
+        prepareBoard(logicalGrid2,graphicGrid2,fleet2,originT2,MANUAL,"Jugador 2");
 
         hideFleet1=true;
         hideFleet2=true;
 
-        combate(MANUAL,MANUAL,logicalGrid1,logicalGrid2,"Jugador 1","Jugador 2");
+        combat(MANUAL,MANUAL,logicalGrid1,logicalGrid2,"Jugador 1","Jugador 2");
 
     }
 

@@ -72,8 +72,8 @@ void About::listenEvents(){
 
 void About::loadBitmaps(){
 
-    background = load_bitmap("img/acercadeljuego1.bmp",NULL);
-    backgroundWithHover = load_bitmap("img/acercadeljuego2.bmp",NULL);
+    background = load_bitmap("img/about/acercadeljuego1.bmp",NULL);
+    backgroundWithHover = load_bitmap("img/about/acercadeljuego2.bmp",NULL);
 
 }
 
