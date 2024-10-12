@@ -1,7 +1,7 @@
 
 # Battleship Game / Batalla Naval en C++ con Allegro
 
-![Batalla Naval](https://github.com/israeldavidvm/Battleship-Game-Batalla-Naval-en-C-con-Allegro/blob/main/img/cover.png?raw=true)
+![Batalla Naval](https://github.com/israeldavidvm/Battleship-Game-Batalla-Naval-en-C-con-Allegro/blob/main/img/battleship-game-batalla-naval-en-c-con-allegro.png?raw=true)
 
 Este repositorio contiene el codigo de un juego de Battleship escito en cpp con ayuda de la libreria Allegro 4.4.3.
 
